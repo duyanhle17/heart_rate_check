@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -55,4 +55,104 @@
     </script>
 
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Heart Rate Monitoring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #e8f5e9;
+            transition: background-color 0.5s;
+        }
+
+        h1 {
+            margin-top: 40px;
+        }
+
+        #hr {
+            font-size: 72px;
+            margin: 20px 0;
+        }
+
+        #status {
+            font-size: 32px;
+            margin: 10px 0;
+        }
+
+        #message {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .normal {
+            color: #2e7d32;
+        }
+
+        .danger {
+            color: #c62828;
+        }
+
+        .bg-normal {
+            background-color: #e8f5e9;
+        }
+
+        .bg-danger {
+            background-color: #ffebee;
+        }
+    </style>
+</head>
+<body class="bg-normal">
+
+    <h1>Giám sát nhịp tim thợ mỏ</h1>
+
+    <div id="hr" class="normal">--</div>
+    <div id="status">Chưa có dữ liệu</div>
+    <div id="message"></div>
+
+    <script>
+        async function fetchHR() {
+            try {
+                const res = await fetch("/latest_hr");
+                if (!res.ok) return;
+
+                const data = await res.json();
+
+                if (!data.hr) return;
+
+                const hrDiv = document.getElementById("hr");
+                const statusDiv = document.getElementById("status");
+                const messageDiv = document.getElementById("message");
+                const body = document.body;
+
+                hrDiv.textContent = data.hr + " bpm";
+                messageDiv.textContent = data.rule_message;
+
+                if (data.is_danger) {
+                    hrDiv.className = "danger";
+                    statusDiv.textContent = "⚠️ NGUY HIỂM";
+                    statusDiv.className = "danger";
+                    body.className = "bg-danger";
+                } else {
+                    hrDiv.className = "normal";
+                    statusDiv.textContent = "Bình thường";
+                    statusDiv.className = "normal";
+                    body.className = "bg-normal";
+                }
+
+            } catch (e) {
+                console.error("Fetch error:", e);
+            }
+        }
+
+        // poll mỗi 1 giây
+        setInterval(fetchHR, 1000);
+    </script>
+
+</body>
 </html>
+

@@ -71,6 +71,9 @@ def receive_hr():
 
     # rule-based
     rule_status, rule_msg = rule_based_hr(hr)
+    
+    #  xác định có nguy hiểm không
+    is_danger = rule_status.startswith("DANGER")
 
     # ML check
     ml_status = ml_check_hr(hr)
@@ -82,7 +85,8 @@ def receive_hr():
         "hr": hr,
         "rule_status": rule_status,
         "rule_message": rule_msg,
-        "ml_status": ml_status
+        "ml_status": ml_status,
+        "is_danger": is_danger   # thêm trường is_danger
     })
 
 #------------------------
@@ -102,7 +106,8 @@ def latest_hr():
         "hr": int(last["hr"]),
         "rule_status": last["rule_status"],
         "rule_message": last["rule_message"],
-        "ml_status": last["ml_status"]
+        "ml_status": last["ml_status"],
+        "is_danger": last["rule_status"] in ["DANGER_LOW", "DANGER_HIGH"]
     })
 #------------------------
 # ======================
