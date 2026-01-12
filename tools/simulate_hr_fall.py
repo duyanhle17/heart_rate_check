@@ -4,8 +4,8 @@ import random
 import requests
 from src.fall.fall_features import load_txt_file
 
-HR_URL = "http://127.0.0.1:8080/hr"
-FALL_URL = "http://127.0.0.1:8080/fall"
+HR_URL = "http://127.0.0.1:5000/hr"
+FALL_URL = "http://127.0.0.1:5000/fall"
 
 def main(fall_txt_path):
     print(f"🚀 Simulating HR + FALL from: {fall_txt_path}")
@@ -48,3 +48,8 @@ if __name__ == "__main__":
         sys.exit(1)
 
     main(sys.argv[1])
+\
+    
+    #python -m tools.simulate_hr_fall data/fall_raw/non_fall/case_001_machinery.txt
+    
+    #chạy thử với mã trên nhé
