@@ -68,6 +68,7 @@ Nếu muốn thử chạy trên máy khác, bên dưới link http trong termina
 
 (lưu ý hiện tại mới chỉ làm trong trường hợp 2 máy chạy cùng địa chỉ mạng)
 
+
 3️⃣ Chạy thử data
 
 Sau khi cài đặt xong thư viện, chạy thử ở 1 terminal mới bằng lệnh này: 
