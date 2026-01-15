@@ -67,10 +67,7 @@ Nếu muốn thử chạy trên máy khác, bên dưới link http trong termina
 --> đó là link có thể máy khác vào được và xem nhịp tim và phát hiện té ngã của công nhân 
 
 (lưu ý hiện tại mới chỉ làm trong trường hợp 2 máy chạy cùng địa chỉ mạng)
-<<<<<<< HEAD
 
-=======
->>>>>>> 3ef80c7855813964e1789a8b5bf1df9e21c8f6c2
 
 3️⃣ Chạy thử data
 
